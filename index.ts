@@ -34,7 +34,9 @@ const removeMarkdown = (
   options.useImgAltText = options.hasOwnProperty("useImgAltText")
     ? options.useImgAltText
     : true;
-  options.preserveLinks = options.hasOwnProperty("preserveLinks") ? options.preserveLinks : false;
+  options.preserveLinks = options.hasOwnProperty("preserveLinks")
+    ? options.preserveLinks
+    : false;
 
   let output = markdown || "";
 
@@ -61,9 +63,9 @@ const removeMarkdown = (
         // Fenced codeblocks
         .replace(/`{3}.*\n/g, "");
     }
-    if(options.preserveLinks) {
+    if (options.preserveLinks) {
       // Remove inline links while preserving the links
-      output = output.replace(/\[(.*?)\][\[\(](.*?)[\]\)]/g, "$1 ($2)")
+      output = output.replace(/\[(.*?)\][\[\(](.*?)[\]\)]/g, "$1 ($2)");
     }
     output = output
       // Remove HTML tags
@@ -104,4 +106,4 @@ const removeMarkdown = (
   return output;
 };
 
-export default removeMarkdown;
+export { removeMarkdown };
